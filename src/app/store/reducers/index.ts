@@ -30,17 +30,6 @@ export const metaReducers: MetaReducer<State>[] = [logger];
 
 export const getProductState = createFeatureSelector<fromProducts.State>('products');
 
-// export const getIds = createSelector(
-//   // getProductState,
-//   // fromProducts.getIds,
-// );
-//
-// export const getProducts = createSelector(
-//   getProductState,
-//   fromProducts.getProducts,
-// );
-//
-//
 export const getAllProducts = createSelector(
   getProductState,
   (state) => {

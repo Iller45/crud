@@ -2,11 +2,6 @@
   <app-product-list [products]="products$ | async" [label]="'Список продуктов'" (edit)="editProduct($event)"></app-product-list>
 
 
-  <app-add-product-form *ngIf="addNewProduct"></app-add-product-form>
+  <app-add-product-form></app-add-product-form>
 
-  <div class="addNewWrp" *ngIf="!addNewProduct">
-    <button mat-raised-button color="accent" (click)="addNewProduct = true">
-      add new product
-    </button>
-  </div>
 </main>

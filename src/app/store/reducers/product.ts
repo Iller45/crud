@@ -21,26 +21,9 @@ export function reducer(state = initialState, action: productAction.Action) {
       };
     }
 
-    case productAction.ADD_ONE_SUCCESS: {
-      return {
-        ...state,
-        products: action.payload
-      };
-    }
-
-
-    case productAction.UPDATE_ONE: {
-      const editedProduct: Product = action.payload;
-      return {
-        ...state,
-        products: {...state.products, editedProduct}
-      };
-    }
-
 
     default:
       return state;
   }
 }
 
-export const getProducts = (state: State) => state.products;

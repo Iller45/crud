@@ -12,7 +12,7 @@ import {Product} from '../../interfaces/product';
 })
 export class AddProductFormComponent {
   @Input() product: Product;
-  addOne      = true;
+  addOne      = false;
   public imagePath;
   imgURL: any;
   public message: string;
@@ -46,10 +46,17 @@ export class AddProductFormComponent {
     };
   }
 
+  prepareAdd(){
+    this.productForm.reset();
+    this.imgURL = null;
+    this.addOne = true;
+  }
+
   addProduct = () => {
     const productItem = this.productForm.value;
     productItem.img   = this.imgURL;
     this.store.dispatch(new AddOne(productItem));
+    this.addOne = false;
   }
 
   openInput() {
