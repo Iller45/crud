@@ -1,0 +1,14 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+body{
+  background-color: #e6fdff;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.addNewWrp {
+  display: flex;
+  justify-content: center;
+}

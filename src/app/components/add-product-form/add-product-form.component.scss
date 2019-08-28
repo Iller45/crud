@@ -1,0 +1,28 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~@angular/material/theming';
+
+
+.addOne {
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  form{
+    width: 100%;
+  }
+  .inputWrp{
+    margin: 24px 0;
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+  .actionBlock{
+    display: flex;
+    justify-content: flex-end;
+    button{
+      margin: 0 16px;
+    }
+  }
+}

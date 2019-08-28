@@ -1,0 +1,55 @@
+
+
+
+<div class="formWrp">
+
+  <div class="addOne">
+    <form [formGroup]="productForm" action="">
+      <div class="inputWrp">
+        <mat-form-field appearance="legacy" [floatLabel]="'never'">
+          <mat-label>Product title</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="inputWrp" >
+        <mat-form-field appearance="legacy" [floatLabel]="'never'">
+          <mat-label>
+            Product price
+          </mat-label>
+          <input matInput type="number" formControlName="cost">
+          <mat-error *ngIf="productForm.get('cost').errors">Required numbers</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="inputWrp">
+        <mat-form-field appearance="legacy" [floatLabel]="'never'">
+          <mat-label>
+            Product description
+          </mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="inputWrp">
+        <label for="product_img">
+
+          <button mat-raised-button (click)="openInput()">Add image for product</button>
+          <input
+            id="product_img"
+            hidden type="file"
+            formControlName="img" (change)="preview($event.target.files)" name="file" accept='image/*'>
+        </label>
+      </div>
+
+      <p *ngIf="imgURL"><img height="200px"  [src]="imgURL" alt=""></p>
+      <div class="actionBlock">
+        <button mat-raised-button color="accent" (click)="addOne = false">cancel</button>
+        <button mat-raised-button [disabled]="productForm.invalid" color="primary" (click)="addProduct()">add</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,64 @@
+<mat-card class="product-card">
+  <form [formGroup]="productEditForm" action="">
+    <mat-card-header>
+      <ng-container *ngIf="!onEdit">
+        <mat-card-title>
+          {{product.name}}
+        </mat-card-title>
+      </ng-container>
+      <ng-container *ngIf="onEdit">
+        <mat-form-field class="nameInput">
+          <input matInput formControlName="name" ngDefaultControl>
+        </mat-form-field>
+      </ng-container>
+    </mat-card-header>
+    <ng-container *ngIf="!onEdit">
+      <img mat-card-image src="{{product.img}}" alt="{{product.name}}">
+    </ng-container>
+    <ng-container *ngIf="onEdit">
+      <div class="imageWrp">
+        <button mat-raised-button (click)="openInput()">add new img</button>
+        <input
+          id="fileInput"
+          hidden type="file"
+          formControlName="img" (change)="preview($event.target.files)" name="file" accept='image/*'>
+        <div class="imgWrp">
+          <img height="200px" [src]="imgURL" alt="">
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!onEdit">
+      <mat-card-content>
+        <p>
+          {{product.description}}
+        </p>
+        <p class="cost">
+          product price - {{product.cost}}
+        </p>
+      </mat-card-content>
+    </ng-container>
+    <ng-container *ngIf="onEdit">
+      <div class="textAreaWrp">
+        <mat-form-field class="textArea">
+          <textarea matInput formControlName="description" ngDefaultControl></textarea>
+        </mat-form-field>
+      </div>
+      <div class="costWrp">
+        <mat-form-field>
+          <input matInput type="number" formControlName="cost">
+          <mat-error *ngIf="productEditForm.get('cost').errors">Required numbers</mat-error>
+        </mat-form-field>
+      </div>
+    </ng-container>
+    <mat-card-actions>
+      <ng-container *ngIf="!onEdit">
+        <button mat-raised-button color="primary" (click)="edit(product)">edit</button>
+        <button mat-raised-button color="accent" (click)="delete(product)">delete</button>
+      </ng-container>
+      <ng-container *ngIf="onEdit">
+        <button mat-raised-button [disabled]="productEditForm.invalid" color="primary" (click)="saveChanges()">save</button>
+        <button mat-raised-button color="accent" (click)="cancelChanges()">cancel</button>
+      </ng-container>
+    </mat-card-actions>
+  </form>
+</mat-card>
